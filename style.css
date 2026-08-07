@@ -1,0 +1,1429 @@
+/*=========================================================*
+ SHELDON ISD TRANSPORTATION
+ TRIP SELECTION BOARD
+ VERSION 3.1
+ PART 1 OF 6
+=========================================================*/
+
+/*=========================================================*
+ RESET
+=========================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/*=========================================================*
+ ROOT COLORS
+=========================================================*/
+
+:root{
+
+    --blue:#0057B8;
+    --darkBlue:#003A70;
+    --lightBlue:#EAF3FF;
+
+    --white:#FFFFFF;
+    --black:#000000;
+
+    --gray100:#F7F9FC;
+    --gray200:#EEF2F6;
+    --gray300:#D9E2EC;
+    --gray500:#6B7280;
+
+    --green:#2E7D32;
+    --red:#C62828;
+    --orange:#F9A825;
+
+    --headerHeight:90px;
+    --footerHeight:40px;
+
+    --rowHeight:48px;
+
+}
+
+/*=========================================================*
+ BODY
+=========================================================*/
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    font-family:
+
+        "Segoe UI",
+
+        Arial,
+
+        Helvetica,
+
+        sans-serif;
+
+    background:var(--gray200);
+
+    color:#222;
+
+    -webkit-font-smoothing:antialiased;
+
+    text-rendering:optimizeLegibility;
+
+}
+
+/*=========================================================*
+ DASHBOARD
+=========================================================*/
+
+.dashboard{
+
+    width:100vw;
+
+    height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:var(--gray200);
+
+}
+
+/*=========================================================*
+ HEADER
+=========================================================*/
+
+header{
+
+    height:var(--headerHeight);
+
+    background:linear-gradient(
+        90deg,
+        var(--darkBlue),
+        var(--blue)
+    );
+
+    color:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 28px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.20);
+
+}
+
+/*=========================================================*
+ HEADER LEFT
+=========================================================*/
+
+.headerLeft{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.logo{
+
+    height:62px;
+
+    width:auto;
+
+    object-fit:contain;
+
+}
+
+/*=========================================================*
+ TITLES
+=========================================================*/
+
+.headerLeft h1{
+
+    font-size:34px;
+
+    font-weight:800;
+
+    letter-spacing:.4px;
+
+}
+
+#currentDate{
+
+    margin-top:4px;
+
+    font-size:18px;
+
+    font-weight:500;
+
+    opacity:.95;
+
+}
+
+/*=========================================================*
+ HEADER RIGHT
+=========================================================*/
+
+.headerRight{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-end;
+
+    gap:8px;
+
+}
+
+#connectionStatus{
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.online{
+
+    color:#9BE564;
+
+}
+
+.offline{
+
+    color:#FF6B6B;
+
+}
+
+#lastUpdated{
+
+    font-size:16px;
+
+    text-align:right;
+
+    line-height:1.3;
+
+}
+/*=========================================================*
+ MAIN
+=========================================================*/
+
+main{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    padding:16px;
+
+}
+
+/*=========================================================*
+ TABLE CONTAINER
+=========================================================*/
+
+.table-container{
+
+    flex:1;
+
+    background:var(--white);
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    border:2px solid var(--gray300);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+}
+
+/*=========================================================*
+ TABLE
+=========================================================*/
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    table-layout:fixed;
+
+}
+
+/*=========================================================*
+ TABLE HEADER
+=========================================================*/
+
+thead{
+
+    background:var(--darkBlue);
+
+    color:var(--white);
+
+}
+
+thead th{
+
+    height:50px;
+
+    padding:10px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    border-right:1px solid rgba(255,255,255,.15);
+
+    white-space:nowrap;
+
+}
+
+thead th:last-child{
+
+    border-right:none;
+
+}
+
+/*=========================================================*
+ TABLE BODY
+=========================================================*/
+
+tbody{
+
+    transition:opacity .35s ease;
+
+}
+
+tbody td{
+
+    height:var(--rowHeight);
+
+    padding:8px 10px;
+
+    font-size:16px;
+
+    border-bottom:1px solid var(--gray300);
+
+    vertical-align:middle;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+/*=========================================================*
+ ALTERNATING ROW COLORS
+=========================================================*/
+
+tbody tr:nth-child(even){
+
+    background:var(--gray100);
+
+}
+
+tbody tr:nth-child(odd){
+
+    background:var(--white);
+
+}
+
+/*=========================================================*
+ HOVER
+=========================================================*/
+
+tbody tr:hover{
+
+    background:var(--lightBlue);
+
+}
+
+/*=========================================================*
+ ALIGNMENT
+=========================================================*/
+
+th:nth-child(1),
+td:nth-child(1),
+
+th:nth-child(2),
+td:nth-child(2),
+
+th:nth-child(5),
+td:nth-child(5),
+
+th:nth-child(6),
+td:nth-child(6),
+
+th:nth-child(7),
+td:nth-child(7),
+
+th:nth-child(8),
+td:nth-child(8),
+
+th:nth-child(11),
+td:nth-child(11){
+
+    text-align:center;
+
+}
+
+th:nth-child(3),
+td:nth-child(3),
+
+th:nth-child(4),
+td:nth-child(4),
+
+th:nth-child(9),
+td:nth-child(9),
+
+th:nth-child(10),
+td:nth-child(10),
+
+th:nth-child(12),
+td:nth-child(12){
+
+    text-align:left;
+
+}
+
+/*=========================================================*
+ TRIP NUMBER
+=========================================================*/
+
+tbody td:nth-child(1){
+
+    font-size:28px;
+
+    font-weight:800;
+
+    color:var(--blue);
+
+}
+
+/*=========================================================*
+ DATE/TIME CELLS
+=========================================================*/
+
+.dateTime{
+
+    line-height:1.25;
+
+    text-align:center;
+
+    white-space:normal;
+
+}
+
+/*=========================================================*
+ ADDRESS WRAPPING
+=========================================================*/
+
+tbody td:nth-child(10){
+
+    white-space:normal;
+
+    word-break:break-word;
+
+    line-height:1.25;
+
+}
+/*=========================================================*
+ STATUS BADGES
+=========================================================*/
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:110px;
+
+    height:34px;
+
+    padding:0 16px;
+
+    border-radius:18px;
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    letter-spacing:.3px;
+
+    box-shadow:0 2px 6px rgba(0,0,0,.18);
+
+}
+
+.badge.open{
+
+    background:#2E7D32;
+
+}
+
+.badge.covered{
+
+    background:#616161;
+
+}
+
+.badge.drop{
+
+    background:#1565C0;
+
+}
+
+/*=========================================================*
+ BUS BADGE
+=========================================================*/
+
+.busBadge{
+
+    width:42px;
+
+    height:42px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--blue);
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    box-shadow:0 2px 6px rgba(0,0,0,.20);
+
+}
+
+/*=========================================================*
+ PAGE FOOTER
+=========================================================*/
+
+.page-footer{
+
+    height:var(--footerHeight);
+
+    background:var(--darkBlue);
+
+    color:#FFFFFF;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 24px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    letter-spacing:.3px;
+
+    box-shadow:0 -3px 8px rgba(0,0,0,.18);
+
+}
+
+.footerCenter{
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+    opacity:.95;
+
+}
+
+/*=========================================================*
+ PAGE INFO
+=========================================================*/
+
+#tripCount{
+
+    color:#FFFFFF;
+
+}
+
+#pageNumber{
+
+    color:#FFFFFF;
+
+}
+
+/*=========================================================*
+ EMPTY TABLE
+=========================================================*/
+
+.emptyMessage{
+
+    text-align:center;
+
+    padding:80px 20px;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:var(--gray500);
+
+}
+
+/*=========================================================*
+ FADE TRANSITION
+=========================================================*/
+
+tbody{
+
+    opacity:1;
+
+    transition:opacity .35s ease;
+
+}
+
+/*=========================================================*
+ SMALL VISUAL POLISH
+=========================================================*/
+
+tbody td:nth-child(3){
+
+    font-weight:600;
+
+}
+
+tbody td:nth-child(4){
+
+    color:var(--darkBlue);
+
+    font-weight:600;
+
+}
+
+tbody td:nth-child(9){
+
+    color:var(--darkBlue);
+
+    font-weight:700;
+
+}
+
+tbody td:nth-child(12){
+
+    font-style:italic;
+
+    color:#555555;
+
+}
+
+/*=========================================================*
+ REMOVE TEXT SELECTION
+=========================================================*/
+
+body{
+
+    user-select:none;
+
+    -webkit-user-select:none;
+
+    -moz-user-select:none;
+
+}
+
+/*=========================================================*
+ IMAGE QUALITY
+=========================================================*/
+
+img{
+
+    -webkit-user-drag:none;
+
+    user-drag:none;
+
+}
+
+/*=========================================================*
+ PERFORMANCE
+=========================================================*/
+
+table{
+
+    will-change:contents;
+
+}
+
+tbody{
+
+    contain:layout style paint;
+
+}/*=========================================================*
+  COLUMN WIDTHS
+=========================================================*/
+
+th:nth-child(1),
+td:nth-child(1){
+    width:95px;
+}
+
+th:nth-child(2),
+td:nth-child(2){
+    width:130px;
+}
+
+th:nth-child(3),
+td:nth-child(3){
+    width:220px;
+}
+
+th:nth-child(4),
+td:nth-child(4){
+    width:190px;
+}
+
+th:nth-child(5),
+td:nth-child(5){
+    width:110px;
+}
+
+th:nth-child(6),
+td:nth-child(6){
+    width:120px;
+}
+
+th:nth-child(7),
+td:nth-child(7){
+    width:135px;
+}
+
+th:nth-child(8),
+td:nth-child(8){
+    width:135px;
+}
+
+th:nth-child(9),
+td:nth-child(9){
+    width:220px;
+}
+
+th:nth-child(10),
+td:nth-child(10){
+    width:auto;
+}
+
+th:nth-child(11),
+td:nth-child(11){
+    width:80px;
+}
+
+th:nth-child(12),
+td:nth-child(12){
+    width:180px;
+}
+
+/*=========================================================*
+  HEADER POLISH
+=========================================================*/
+
+header{
+
+    border-bottom:4px solid #0078D4;
+
+}
+
+.logo{
+
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));
+
+}
+
+/*=========================================================*
+  TABLE SPACING
+=========================================================*/
+
+thead th{
+
+    letter-spacing:.4px;
+
+}
+
+tbody td{
+
+    letter-spacing:.2px;
+
+}
+
+/*=========================================================*
+  TABLE BORDER
+=========================================================*/
+
+tbody tr:last-child td{
+
+    border-bottom:none;
+
+}
+
+/*=========================================================*
+  PAGE TRANSITION
+=========================================================*/
+
+.pageFadeOut{
+
+    opacity:0;
+
+}
+
+.pageFadeIn{
+
+    opacity:1;
+
+}
+
+/*=========================================================*
+  LOADING STATE
+=========================================================*/
+
+.loading{
+
+    text-align:center;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:var(--gray500);
+
+    padding:80px;
+
+}
+
+/*=========================================================*
+  NO TRIPS STATE
+=========================================================*/
+
+.noTrips{
+
+    text-align:center;
+
+    font-size:32px;
+
+    font-weight:700;
+
+    color:#666;
+
+    padding:80px;
+
+}
+
+/*=========================================================*
+  TABLE HEIGHT
+=========================================================*/
+
+.table-container{
+
+    height:100%;
+
+}
+
+/*=========================================================*
+  RESPONSIVE TEXT
+=========================================================*/
+
+@media screen and (min-width:1600px){
+
+    tbody td{
+
+        font-size:17px;
+
+    }
+
+    thead th{
+
+        font-size:17px;
+
+    }
+
+}
+
+/*=========================================================*
+  FULL HD OPTIMIZATION
+=========================================================*/
+
+@media screen and (min-width:1900px){
+
+    :root{
+
+        --rowHeight:50px;
+
+    }
+
+}
+
+/*=========================================================*
+  PERFORMANCE
+=========================================================*/
+
+.dashboard{
+
+    contain:layout style;
+
+}
+
+.table-container{
+
+    contain:layout paint;
+
+}
+
+tbody{
+
+    will-change:opacity;
+
+}
+
+/*=========================================================*
+  REMOVE BLUE TAP HIGHLIGHT
+=========================================================*/
+
+*{
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+/*=========================================================*
+  FUTURE STATUS COLORS
+=========================================================*/
+
+.badge.pending{
+
+    background:#F9A825;
+
+}
+
+.badge.cancelled{
+
+    background:#C62828;
+
+}
+
+.badge.complete{
+
+    background:#455A64;
+
+}/*=========================================================*
+ VISUAL POLISH
+=========================================================*/
+
+body{
+
+    background:
+    linear-gradient(
+        to bottom,
+        #EDF2F7,
+        #E4EBF3
+    );
+
+}
+
+/*=========================================================*
+ HEADER SHADOW
+=========================================================*/
+
+header{
+
+    box-shadow:
+
+        0 4px 14px rgba(0,0,0,.18);
+
+}
+
+/*=========================================================*
+ TABLE SHADOW
+=========================================================*/
+
+.table-container{
+
+    box-shadow:
+
+        0 10px 24px rgba(0,0,0,.15);
+
+}
+
+/*=========================================================*
+ ROW TRANSITIONS
+=========================================================*/
+
+tbody tr{
+
+    transition:
+
+        background-color .25s ease,
+
+        transform .15s ease;
+
+}
+
+tbody tr:hover{
+
+    background:#EAF3FF;
+
+}
+
+/*=========================================================*
+ PAGE FADE
+=========================================================*/
+
+.fadeOut{
+
+    opacity:0;
+
+}
+
+.fadeIn{
+
+    opacity:1;
+
+}
+
+/*=========================================================*
+ DESTINATION
+=========================================================*/
+
+tbody td:nth-child(9){
+
+    color:var(--darkBlue);
+
+    font-weight:700;
+
+}
+
+/*=========================================================*
+ ADDRESS
+=========================================================*/
+
+tbody td:nth-child(10){
+
+    color:#555;
+
+    font-size:15px;
+
+    line-height:1.3;
+
+}
+
+/*=========================================================*
+ SPONSOR
+=========================================================*/
+
+tbody td:nth-child(12){
+
+    color:#444;
+
+    font-style:italic;
+
+}
+
+/*=========================================================*
+ BUS BADGE ANIMATION
+=========================================================*/
+
+.busBadge{
+
+    transition:
+
+        transform .20s ease,
+
+        box-shadow .20s ease;
+
+}
+
+.busBadge:hover{
+
+    transform:scale(1.08);
+
+}
+
+/*=========================================================*
+ STATUS BADGE ANIMATION
+=========================================================*/
+
+.badge{
+
+    transition:
+
+        transform .20s ease,
+
+        opacity .20s ease;
+
+}
+
+.badge:hover{
+
+    transform:scale(1.05);
+
+}
+
+/*=========================================================*
+ FOOTER
+=========================================================*/
+
+.page-footer{
+
+    border-top:3px solid #0078D4;
+
+}
+
+#tripCount{
+
+    min-width:180px;
+
+}
+
+#pageNumber{
+
+    min-width:140px;
+
+    text-align:right;
+
+}
+
+.footerCenter{
+
+    text-align:center;
+
+    flex:1;
+
+}
+
+/*=========================================================*
+ LED OPTIMIZATION
+=========================================================*/
+
+.dashboard{
+
+    image-rendering:auto;
+
+}
+
+.logo{
+
+    image-rendering:auto;
+
+}
+
+/*=========================================================*
+ PRINT
+=========================================================*/
+
+@media print{
+
+    body{
+
+        background:white;
+
+    }
+
+    header,
+    footer{
+
+        display:none;
+
+    }
+
+}
+
+/*=========================================================*
+ ACCESSIBILITY
+=========================================================*/
+
+th{
+
+    text-transform:uppercase;
+
+}
+
+thead th{
+
+    font-size:15px;
+
+}
+
+tbody td{
+
+    font-size:16px;
+
+}
+
+/*=========================================================*
+ FINAL PERFORMANCE
+=========================================================*/
+
+*{
+
+    backface-visibility:hidden;
+
+    -webkit-backface-visibility:hidden;
+
+}
+
+.dashboard{
+
+    overflow:hidden;
+
+}
+
+.table-container{
+
+    overflow:hidden;
+
+}
+
+/*=========================================================*
+ READY FOR PAGING
+=========================================================*/
+
+tbody{
+
+    opacity:1;
+
+    transition:opacity .35s ease-in-out;
+
+}/*=========================================================*
+ SHELDON ISD TRANSPORTATION
+ TRIP SELECTION BOARD
+ VERSION 3.1
+ PART 6 OF 6
+=========================================================*/
+
+/*=========================================================
+ UTILITIES
+=========================================================*/
+
+.hidden{
+    display:none !important;
+}
+
+.text-left{
+    text-align:left !important;
+}
+
+.text-center{
+    text-align:center !important;
+}
+
+.text-right{
+    text-align:right !important;
+}
+
+.bold{
+    font-weight:700 !important;
+}
+
+.uppercase{
+    text-transform:uppercase !important;
+}
+
+/*=========================================================
+ SPACING HELPERS
+=========================================================*/
+
+.mt-5{margin-top:5px;}
+.mt-10{margin-top:10px;}
+.mt-15{margin-top:15px;}
+
+.mb-5{margin-bottom:5px;}
+.mb-10{margin-bottom:10px;}
+.mb-15{margin-bottom:15px;}
+
+/*=========================================================
+ TRANSITIONS
+=========================================================*/
+
+.fade-enter{
+
+    opacity:0;
+
+}
+
+.fade-enter-active{
+
+    opacity:1;
+
+    transition:opacity .35s ease;
+
+}
+
+.fade-exit{
+
+    opacity:1;
+
+}
+
+.fade-exit-active{
+
+    opacity:0;
+
+    transition:opacity .35s ease;
+
+}
+
+/*=========================================================
+ SCROLLBAR
+(Not used in paging mode but kept as backup)
+=========================================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+    height:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#E5E7EB;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#0057B8;
+
+    border-radius:4px;
+
+}
+
+/*=========================================================
+ SELECTION
+=========================================================*/
+
+::selection{
+
+    background:#0057B8;
+
+    color:#FFFFFF;
+
+}
+
+/*=========================================================
+ FOCUS
+=========================================================*/
+
+*:focus{
+
+    outline:none;
+
+}
+
+/*=========================================================
+ IMAGE SETTINGS
+=========================================================*/
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+/*=========================================================
+ TABLE PERFORMANCE
+=========================================================*/
+
+table{
+
+    border-spacing:0;
+
+}
+
+thead{
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+tbody{
+
+    position:relative;
+
+    z-index:1;
+
+}
+
+/*=========================================================
+ LED DISPLAY OPTIMIZATION
+=========================================================*/
+
+body{
+
+    cursor:default;
+
+}
+
+.dashboard{
+
+    min-width:1920px;
+
+    min-height:1080px;
+
+}
+
+/*=========================================================
+ END OF FILE
+=========================================================*/
+
+/*
+
+Sheldon ISD Transportation
+Trip Selection Board
+
+Version 3.1 Production
+
+Optimized for:
+
+✓ GitHub Pages
+✓ LED Partners Cloud
+✓ NovaStar Player
+✓ 1920×1080 Displays
+✓ Google Sheets Live Data
+✓ Automatic Paging
+
+*/
