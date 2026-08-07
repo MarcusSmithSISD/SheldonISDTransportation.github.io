@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheldon ISD Transportation - Trip Selection Board</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Watermark -->
+    <div class="watermark"></div>
+
+    <!-- Header -->
+    <header class="header">
+
+        <div class="logo-section">
+            <img src="logo.png" alt="Sheldon ISD Logo">
+        </div>
+
+        <div class="title-section">
+            <h1>SHELDON ISD TRANSPORTATION</h1>
+            <h2>Trip Selection Board</h2>
+        </div>
+
+        <div class="info-section">
+
+            <div id="connectionStatus" class="online">
+                ● LIVE
+            </div>
+
+            <div id="currentDate"></div>
+
+            <div id="lastUpdated"></div>
+
+        </div>
+
+    </header>
+
+    <!-- Main Table -->
+
+    <main>
+
+        <div class="table-container">
+
+            <table id="tripTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Trip #</th>
+
+                        <th>Status</th>
+
+                        <th>Activity</th>
+
+                        <th>Campus</th>
+
+                        <th>Clock In</th>
+
+                        <th>Load Time</th>
+
+                        <th>Departure</th>
+
+                        <th>Return</th>
+
+                        <th>Destination</th>
+
+                        <th>Address</th>
+
+                        <th># Buses</th>
+
+                        <th>Sponsor</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="tripBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+    <!-- Papa Parse -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
