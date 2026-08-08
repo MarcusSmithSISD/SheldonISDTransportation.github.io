@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Sheldon ISD Transportation
+        Trip Selection Board
+    </title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Papa Parse -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+
+<div class="app">
+
+    <!--==================================================
+        HEADER
+    ===================================================-->
+
+    <header class="header">
+
+        <div class="logoArea">
+
+            <img
+                id="districtLogo"
+                src="logo.png"
+                alt="Sheldon ISD Logo">
+
+        </div>
+
+        <div class="titleArea">
+
+            <div class="districtTitle">
+
+                SHELDON ISD TRANSPORTATION
+
+            </div>
+
+            <div class="boardTitle">
+
+                TRIP SELECTION BOARD
+
+            </div>
+
+        </div>
+
+        <div class="statusArea">
+
+            <div
+                id="connectionStatus"
+                class="status live">
+
+                ● LIVE
+
+            </div>
+
+            <div
+                id="currentDate"
+                class="currentDate">
+
+                Loading...
+
+            </div>
+
+            <div
+                id="lastSync"
+                class="lastSync">
+
+                Last Updated
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!--==================================================
+        TABLE
+    ===================================================-->
+
+    <main class="tableContainer">
+
+        <table>
+
+            <thead>
+
+            <tr>
+
+                <th>Trip #</th>
+
+                <th>Cover Status</th>
+
+                <th>Activity</th>
+
+                <th>Departure Campus</th>
+
+                <th>CLOCK IN</th>
+
+                <th>Load Time</th>
+
+                <th>Depart</th>
+
+                <th>Return</th>
+
+                <th>Destination</th>
+
+                <th>Address</th>
+
+                <th>#Buses</th>
+
+                <th>Sponsor</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="tripBody">
+
+            <tr>
+
+                <td
+                    colspan="12"
+                    class="loading">
+
+                    Loading trips...
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </main>
+
+    <!--==================================================
+        FOOTER
+    ===================================================-->
+
+    <footer class="footer">
+
+        <div
+            id="tripCount">
+
+            Trips: 0
+
+        </div>
+
+        <div
+            id="pageNumber">
+
+            Page 1 of 1
+
+        </div>
+
+        <div
+            id="version">
+
+            Version 1.0
+
+        </div>
+
+        <div
+            id="refreshTime">
+
+            Waiting...
+
+        </div>
+
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
